@@ -1,4 +1,4 @@
-const db = require("../config/queries");
+const db = require("../config/queries").pool;
 
 const getUsers = (request, response) => {
   db.query("SELECT * FROM omg_users ORDER BY id ASC", (error, results) => {

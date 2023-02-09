@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 1993;
 const bodyParser = require("body-parser");
+const userModel = require('./models/users');
 
 var path = require("path");
 
@@ -23,12 +24,8 @@ app.use(
   })
 );
 
-app.get("/", (request, response) => {
-  response.json({
-    info: "Node.js, Express, and Postgres API",
-  });
-});
+app.get("/", userModel.getUsers);
 
 var server = app.listen(port, function () {
-  console.log("Node server is running..");
+  console.log("Node server is running.." + port);
 });
